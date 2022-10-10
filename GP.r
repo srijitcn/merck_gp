@@ -447,4 +447,26 @@ print(paste0("Run time (minutes):", (as.numeric(Sys.time() - start_time , units 
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC The above command will keep running forever, even after the Spark job is completed.. but if you look at driver logs you can see
+# MAGIC ```
+# MAGIC OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0
+# MAGIC Mon Oct 10 13:11:34 2022 Python shell started with PID  3976  and guid  d4341cd6d41a4ce38abee7addad9f383
+# MAGIC Mon Oct 10 13:11:34 2022 Initialized gateway on port 45159
+# MAGIC Mon Oct 10 13:11:37 2022 Python shell executor start
+# MAGIC (22/10/10 13:11:43 ERROR sparklyr: Gateway (65529) failed with exception ,java.io.EOFException)
+# MAGIC java.lang.OutOfMemoryError
+# MAGIC 	at java.io.ByteArrayOutputStream.hugeCapacity(ByteArrayOutputStream.java:123)
+# MAGIC 	at java.io.ByteArrayOutputStream.grow(ByteArrayOutputStream.java:117)
+# MAGIC 	at java.io.ByteArrayOutputStream.ensureCapacity(ByteArrayOutputStream.java:93)
+# MAGIC 	at java.io.ByteArrayOutputStream.write(ByteArrayOutputStream.java:153)
+# MAGIC 	at java.io.DataOutputStream.write(DataOutputStream.java:107)
+# MAGIC 	at java.io.FilterOutputStream.write(FilterOutputStream.java:97)
+# MAGIC 	at sparklyr.Serializer$.writeBytes(serializer.scala:199)
+# MAGIC 	at sparklyr.Serializer.writeObject(serializer.scala:449)
+# MAGIC 
+# MAGIC ```
+
+# COMMAND ----------
+
 
